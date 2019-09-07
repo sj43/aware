@@ -256,25 +256,29 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
                                     //mAdapter.addResult(sentence[1]);
                                     //mRecyclerView.smoothScrollToPosition(0);
                                 } else {
-                                    String[] sentence = text.split(" "); //get user input as array of strings
-
-                                    for (String word : sentence) {
-                                        for (String second : sentence) {
-                                            if (word.equals("merge") && second.equals("right")) {
-                                                String test = "Do you want to merge right?";
-                                                openMergeRight();
-                                                mText.setText(test);
-                                            } else if (word.equals("merge") && second.equals("left")) {
-                                                String test = "Do you want to merge left?";
-                                                mText.setText(test);
-                                            } else if (word.equals("pass")){
-                                                String test = "Do you want to pass?";
-                                                mText.setText(test);
-                                            }
-                                        }
-                                    }
+                                    if (text.contains("merge right")) openMergeRight();
+//                                    if (text.contains("merge left")) openMergeLeft();
+//                                    if (text.contains("pass")) openPass();
 
 
+//                                    String[] sentence = text.split(" "); //get user input as array of strings
+//                                    for (String word : sentence) {
+//                                        for (String second : sentence) {
+//                                            if (word.equals("merge") && second.equals("right")) {
+//                                                String test = "Do you want to merge right?";
+//                                                openMergeRight();
+//                                                mText.setText(test);
+//                                            } else if (word.equals("merge") && second.equals("left")) {
+//                                                String test = "Do you want to merge left?";
+//                                                //openMergeLeft();
+//                                                mText.setText(test);
+//                                            } else if (word.equals("pass")){
+//                                                String test = "Do you want to pass?";
+//                                                //openPass();
+//                                                mText.setText(test);
+//                                            }
+//                                        }
+//                                    }
                                 }
                             }
                         });

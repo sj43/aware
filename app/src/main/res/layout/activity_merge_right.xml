@@ -44,9 +44,9 @@
             android:id="@+id/arrow"
             android:layout_width="199dp"
             android:layout_height="138dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="100dp"
-            android:layout_marginTop="20dp"
             android:background="@drawable/curvedarrow"
             android:paddingRight="90dp"
 
@@ -59,7 +59,7 @@
             android:layout_height="169dp"
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:background="@drawable/carbutton"
+            android:background="@drawable/carimg"
             android:rotation="90" />
 
         <!--        <android.support.v7.widget.Toolbar-->
