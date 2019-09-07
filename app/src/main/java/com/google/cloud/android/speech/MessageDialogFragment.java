@@ -47,7 +47,7 @@ public class MessageDialogFragment extends AppCompatDialogFragment {
      * @param message The message to be shown on the dialog.
      * @return A newly created dialog fragment.
      */
-    public static MessageDialogFragment newInstance(String message) {
+    public static MessageDialogFragment newInstance(String message) { //for permission pop up
         final MessageDialogFragment fragment = new MessageDialogFragment();
         final Bundle args = new Bundle();
         args.putString(ARG_MESSAGE, message);

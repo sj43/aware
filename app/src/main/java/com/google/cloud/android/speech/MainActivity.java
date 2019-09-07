@@ -39,6 +39,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
@@ -116,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
         mColorHearing = ResourcesCompat.getColor(resources, R.color.status_hearing, theme);
         mColorNotHearing = ResourcesCompat.getColor(resources, R.color.status_not_hearing, theme);
 
-        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        //setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
         mStatus = (TextView) findViewById(R.id.status);
         mText = (TextView) findViewById(R.id.text);
 
@@ -171,7 +172,7 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-            @NonNull int[] grantResults) {
+                                           @NonNull int[] grantResults) {
         if (requestCode == REQUEST_RECORD_AUDIO_PERMISSION) {
             if (permissions.length == 1 && grantResults.length == 1
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -237,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
                 REQUEST_RECORD_AUDIO_PERMISSION);
     }
 
-    private final SpeechService.Listener mSpeechServiceListener =
+    private final SpeechService.Listener mSpeechServiceListener = //writes down user input below
             new SpeechService.Listener() {
                 @Override
                 public void onSpeechRecognized(final String text, final boolean isFinal) {
@@ -250,16 +251,40 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
                             public void run() {
                                 if (isFinal) {
                                     mText.setText(null);
-                                    mAdapter.addResult(text);
-                                    mRecyclerView.smoothScrollToPosition(0);
+                                    mAdapter.addResult(text + '1');
+
+                                    //mAdapter.addResult(sentence[1]);
+                                    //mRecyclerView.smoothScrollToPosition(0);
                                 } else {
-                                    mText.setText(text);
+                                    String[] sentence = text.split(" "); //get user input as array of strings
+
+                                    for (String word : sentence) {
+                                        for (String second : sentence) {
+                                            if (word.equals("merge") && second.equals("right")) {
+                                                String test = "Do you want to merge right?";
+                                                openMergeRight();
+                                                mText.setText(test);
+                                            } else if (word.equals("merge") && second.equals("left")) {
+                                                String test = "Do you want to merge left?";
+                                                mText.setText(test);
+                                            } else if (word.equals("pass")){
+                                                String test = "Do you want to pass?";
+                                                mText.setText(test);
+                                            }
+                                        }
+                                    }
+
+
                                 }
                             }
                         });
                     }
                 }
             };
+    public void openMergeRight(){
+        Intent intent = new Intent(this, merge_right.class);
+        startActivity(intent);
+    }
 
     private static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -269,7 +294,6 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
             super(inflater.inflate(R.layout.item_result, parent, false));
             text = (TextView) itemView.findViewById(R.id.text);
         }
-
     }
 
     private static class ResultAdapter extends RecyclerView.Adapter<ViewHolder> {
@@ -302,10 +326,10 @@ public class MainActivity extends AppCompatActivity implements MessageDialogFrag
             notifyItemInserted(0);
         }
 
-        public ArrayList<String> getResults() {
+                public ArrayList<String> getResults() {
+            System.out.println(mResults);
             return mResults;
         }
 
     }
-
 }

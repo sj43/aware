@@ -14,7 +14,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -27,7 +27,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/white"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
@@ -41,13 +41,27 @@
             android:layout_marginBottom="50dp" />
 
         <Button
+            android:id="@+id/arrow"
+            android:layout_width="199dp"
+            android:layout_height="138dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/curvedarrow"
+            android:paddingRight="90dp"
+
+            android:rotation="90"
+            android:rotationY="90" />
+
+        <Button
             android:id="@+id/custom_button"
             android:layout_width="293dp"
             android:layout_height="169dp"
             android:layout_gravity="center"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="0dp"
             android:background="@drawable/carbutton"
             android:rotation="90" />
+
         <!--        <android.support.v7.widget.Toolbar-->
         <!--            android:id="@+id/toolbar"-->
         <!--            android:layout_width="match_parent"-->
@@ -64,9 +78,9 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/spacing_small"
         android:paddingTop="@dimen/spacing_small"
+        android:paddingBottom="@dimen/spacing_small"
         app:behavior_overlapTop="128dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
