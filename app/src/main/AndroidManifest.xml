@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.aware">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,13 +13,54 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<!--        <service-->
+<!--            android:name=".MyFirebaseInstanceIDService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true"></service>-->
+<!--        <service-->
+<!--            android:name=".MyFirebaseMessagingService"-->
+<!--            android:enabled="true"-->
+<!--            android:exported="true" />-->
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!--        <activity android:name=".MergeActivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="MERGE"></action>-->
+<!--                <category android:name="android.intent.category.DEFAULT"></category>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+
+        <activity android:name=".RequestMergeLeft">
+            <intent-filter>
+                <action android:name="REQUEST_MERGE_LEFT"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+
+
+<!--        <activity android:name=".PassActivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="PASS"></action>-->
+<!--                <category android:name="android.intent.category.DEFAULT"></category>-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
